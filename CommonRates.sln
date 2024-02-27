@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonRates.Binance", "CommonRates.Binance\CommonRates.Binance.csproj", "{0894D6FC-D69B-4DAD-BBEE-1F6250D15149}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonRates.Common", "CommonRates.Common\CommonRates.Common.csproj", "{440BD5F9-CF6C-4190-A6CB-C7CA7C3BAFDC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{0894D6FC-D69B-4DAD-BBEE-1F6250D15149}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0894D6FC-D69B-4DAD-BBEE-1F6250D15149}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0894D6FC-D69B-4DAD-BBEE-1F6250D15149}.Release|Any CPU.Build.0 = Release|Any CPU
+		{440BD5F9-CF6C-4190-A6CB-C7CA7C3BAFDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{440BD5F9-CF6C-4190-A6CB-C7CA7C3BAFDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{440BD5F9-CF6C-4190-A6CB-C7CA7C3BAFDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{440BD5F9-CF6C-4190-A6CB-C7CA7C3BAFDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
