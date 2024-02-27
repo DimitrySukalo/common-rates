@@ -1,6 +1,8 @@
+using CommonRates.Binance.Helpers;
 using CommonRates.Binance.Options;
 using CommonRates.Common.Helpers.HttpClients;
 using CommonRates.Common.Ports.Binance;
+using CommonRates.Common.Ports.Binance.Requests;
 using CommonRates.Common.Ports.Binance.Responses;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -22,10 +24,12 @@ public class BinanceApiAdapter : IBinanceApiAdapter
         _apiOptions = apiOptions.Value;
         _logger = logger;
     }
-
-    public async Task<List<BinanceRateResponse>> GetAllRates()
+    
+    public async Task<List<BinanceAggregateTradesResponse>> GetAggregateTradesAsync(GetAggregateTradesRequest request)
     {
-        return await HttpClientHelper.PerformJsonRequest<List<BinanceRateResponse>>(
-            async client => await client.GetAsync(_apiOptions.RatesUrl), _httpClient, _logger);
+        var url = BinanceUrlBuilder.BuildAggregateTradesUrl(_apiOptions.BaseUrl, request);
+        
+        return await HttpClientHelper.PerformJsonRequest<List<BinanceAggregateTradesResponse>>(
+            async client => await client.GetAsync(url), _httpClient, _logger);
     }
 }

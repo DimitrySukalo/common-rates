@@ -2,5 +2,5 @@ namespace CommonRates.Binance.Options;
 
 public class BinanceApiOptions
 {
-    public string RatesUrl { get; set; }
+    public string BaseUrl { get; set; }
 }
