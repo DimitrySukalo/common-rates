@@ -2,7 +2,7 @@ using CommonRates.Common.Attributes;
 
 namespace CommonRates.Common.Ports.Binance.Requests;
 
-public class GetAggregateTradesRequest
+public class GetBinanceAggregateTradesRequest
 {
     [UrlParameter("symbol")] public string Symbol { get; set; }
     

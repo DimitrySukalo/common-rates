@@ -5,5 +5,7 @@ namespace CommonRates.Common.Ports.Binance;
 
 public interface IBinanceApiAdapter
 {
-    public Task<List<BinanceAggregateTradesResponse>> GetAggregateTradesAsync(GetAggregateTradesRequest request);
+    public Task<List<BinanceAggregateTradesResponse>> GetAggregateTradesAsync(GetBinanceAggregateTradesRequest request);
+    
+    public Task<List<BinanceAveragePriceResponse>> GetAveragePrice(GetBinanceAveragePriceRequest request);
 }

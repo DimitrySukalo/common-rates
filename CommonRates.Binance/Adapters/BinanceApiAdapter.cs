@@ -25,11 +25,19 @@ public class BinanceApiAdapter : IBinanceApiAdapter
         _logger = logger;
     }
     
-    public async Task<List<BinanceAggregateTradesResponse>> GetAggregateTradesAsync(GetAggregateTradesRequest request)
+    public async Task<List<BinanceAggregateTradesResponse>> GetAggregateTradesAsync(GetBinanceAggregateTradesRequest request)
     {
         var url = BinanceUrlBuilder.BuildAggregateTradesUrl(_apiOptions.BaseUrl, request);
         
         return await HttpClientHelper.PerformJsonRequest<List<BinanceAggregateTradesResponse>>(
+            async client => await client.GetAsync(url), _httpClient, _logger);
+    }
+
+    public async Task<List<BinanceAveragePriceResponse>> GetAveragePrice(GetBinanceAveragePriceRequest request)
+    {
+        var url = BinanceUrlBuilder.BuildAveragePriceUrl(_apiOptions.BaseUrl, request);
+        
+        return await HttpClientHelper.PerformJsonRequest<List<BinanceAveragePriceResponse>>(
             async client => await client.GetAsync(url), _httpClient, _logger);
     }
 }
