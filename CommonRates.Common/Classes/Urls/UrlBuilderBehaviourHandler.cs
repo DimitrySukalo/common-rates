@@ -1,6 +1,8 @@
 using System.Reflection;
 using CommonRates.Common.Attributes;
 using CommonRates.Common.Enums.Behaviours;
+using CommonRates.Common.Enums.Errors;
+using CommonRates.Common.Exceptions;
 
 namespace CommonRates.Common.Classes.Urls;
 
@@ -25,7 +27,7 @@ public class UrlBuilderBehaviourHandler<T>
         {
             UrlParameterConvertingBehaviour.Default => ProcessDefaultBehaviour(),
             UrlParameterConvertingBehaviour.BinanceArray => ProcessBinanceArrayBehaviour(),
-            _ => throw new ArgumentOutOfRangeException($"Unknown url build behaviour: {Attribute.Behaviour}.")
+            _ => throw new ApplicationErrorException(ApplicationError.UrlParameterBehaviourNotFound)
         };
     }
 
@@ -44,7 +46,7 @@ public class UrlBuilderBehaviourHandler<T>
 
         if (value is not string[] array)
         {
-            throw new Exception();
+            throw new ApplicationErrorException(ApplicationError.ValueIsNotArray);
         }
         
         var result = "[" + string.Join(", ", array.Select(n => $"\"{n}\"")) + "]";
