@@ -3,6 +3,7 @@ using CommonRates.Binance.Options;
 using CommonRates.Common.Helpers.HttpClients;
 using CommonRates.Common.Ports.Binance;
 using CommonRates.Common.Ports.Binance.Requests;
+using CommonRates.Common.Ports.Binance.Requests.Abstracts;
 using CommonRates.Common.Ports.Binance.Responses;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -46,6 +47,14 @@ public class BinanceApiAdapter : IBinanceApiAdapter
         var url = BinanceUrlBuilder.BuildDepthUrl(_apiOptions.BaseUrl, request);
         
         return await HttpClientHelper.PerformJsonRequest<List<BinanceDepthResponse>>(
+            async client => await client.GetAsync(url), _httpClient, _logger);
+    }
+
+    public async Task<List<BinanceExchangeInfoResponse>> GetExchangeInfo(GetBinanceExchangeInfoAbstractRequest request)
+    {
+        var url = BinanceUrlBuilder.BuildExchangeInfoUrl(_apiOptions.BaseUrl, request);
+        
+        return await HttpClientHelper.PerformJsonRequest<List<BinanceExchangeInfoResponse>>(
             async client => await client.GetAsync(url), _httpClient, _logger);
     }
 }

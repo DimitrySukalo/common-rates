@@ -18,14 +18,15 @@ public static class GeneralUrlBuilder
         {
             // Get the custom attribute if exists
             var attribute = prop.GetCustomAttribute<UrlParameterAttribute>();
-
-            // Determine the parameter name
-            var paramName = attribute != null ? attribute.Name : prop.Name;
-
+            
             // Append parameter to the URL
             urlBuilder.Append(isFirstParam ? "?" : "&");
+            
+            var behaviourHandler = new UrlBuilderBehaviourHandler<T>(attribute, prop, payload);
 
-            urlBuilder.Append($"{paramName}={prop.GetValue(payload)}");
+            var part = behaviourHandler.HandleBehaviour();
+
+            urlBuilder.Append(part);
 
             isFirstParam = false;
         }
