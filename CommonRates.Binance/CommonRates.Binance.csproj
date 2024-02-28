@@ -9,4 +9,8 @@
       <ProjectReference Include="..\CommonRates.Common\CommonRates.Common.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Models\" />
+    </ItemGroup>
+
 </Project>

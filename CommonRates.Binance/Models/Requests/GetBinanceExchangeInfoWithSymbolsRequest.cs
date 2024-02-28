@@ -1,8 +1,8 @@
+using CommonRates.Binance.Models.Requests.Abstracts;
 using CommonRates.Common.Attributes;
-using CommonRates.Common.Attributes.Behaviours;
-using CommonRates.Common.Ports.Binance.Requests.Abstracts;
+using CommonRates.Common.Enums.Behaviours;
 
-namespace CommonRates.Common.Ports.Binance.Requests;
+namespace CommonRates.Binance.Models.Requests;
 
 public sealed class GetBinanceExchangeInfoWithSymbolsRequest : GetBinanceExchangeInfoAbstractRequest
 {

@@ -1,6 +1,7 @@
 using System.Reflection;
 using System.Text;
 using CommonRates.Common.Attributes;
+using CommonRates.Common.Classes.Urls;
 
 namespace CommonRates.Common.Helpers.Urls;
 

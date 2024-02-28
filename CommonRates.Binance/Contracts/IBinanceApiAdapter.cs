@@ -1,8 +1,8 @@
-using CommonRates.Common.Ports.Binance.Requests;
-using CommonRates.Common.Ports.Binance.Requests.Abstracts;
-using CommonRates.Common.Ports.Binance.Responses;
+using CommonRates.Binance.Models.Requests;
+using CommonRates.Binance.Models.Requests.Abstracts;
+using CommonRates.Binance.Models.Responses;
 
-namespace CommonRates.Common.Ports.Binance;
+namespace CommonRates.Binance.Contracts;
 
 public interface IBinanceApiAdapter
 {

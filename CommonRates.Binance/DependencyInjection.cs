@@ -1,6 +1,6 @@
 using CommonRates.Binance.Adapters;
+using CommonRates.Binance.Contracts;
 using CommonRates.Binance.Options;
-using CommonRates.Common.Ports.Binance;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

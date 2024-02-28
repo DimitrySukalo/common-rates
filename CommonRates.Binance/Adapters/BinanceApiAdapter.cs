@@ -1,10 +1,10 @@
+using CommonRates.Binance.Contracts;
 using CommonRates.Binance.Helpers;
+using CommonRates.Binance.Models.Requests;
+using CommonRates.Binance.Models.Requests.Abstracts;
+using CommonRates.Binance.Models.Responses;
 using CommonRates.Binance.Options;
 using CommonRates.Common.Helpers.HttpClients;
-using CommonRates.Common.Ports.Binance;
-using CommonRates.Common.Ports.Binance.Requests;
-using CommonRates.Common.Ports.Binance.Requests.Abstracts;
-using CommonRates.Common.Ports.Binance.Responses;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 

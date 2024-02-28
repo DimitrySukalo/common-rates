@@ -1,8 +1,8 @@
 using System.Reflection;
 using CommonRates.Common.Attributes;
-using CommonRates.Common.Attributes.Behaviours;
+using CommonRates.Common.Enums.Behaviours;
 
-namespace CommonRates.Common.Helpers.Urls;
+namespace CommonRates.Common.Classes.Urls;
 
 public class UrlBuilderBehaviourHandler<T>
 {

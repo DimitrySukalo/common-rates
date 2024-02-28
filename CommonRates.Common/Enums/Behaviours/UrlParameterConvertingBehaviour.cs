@@ -1,4 +1,4 @@
-namespace CommonRates.Common.Attributes.Behaviours;
+namespace CommonRates.Common.Enums.Behaviours;
 
 public enum UrlParameterConvertingBehaviour
 {

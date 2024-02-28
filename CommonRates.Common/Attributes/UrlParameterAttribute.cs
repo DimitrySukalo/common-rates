@@ -1,4 +1,4 @@
-using CommonRates.Common.Attributes.Behaviours;
+using CommonRates.Common.Enums.Behaviours;
 
 namespace CommonRates.Common.Attributes;
 

@@ -1,6 +1,6 @@
+using CommonRates.Binance.Models.Requests;
+using CommonRates.Binance.Models.Requests.Abstracts;
 using CommonRates.Common.Helpers.Urls;
-using CommonRates.Common.Ports.Binance.Requests;
-using CommonRates.Common.Ports.Binance.Requests.Abstracts;
 
 namespace CommonRates.Binance.Helpers;
 

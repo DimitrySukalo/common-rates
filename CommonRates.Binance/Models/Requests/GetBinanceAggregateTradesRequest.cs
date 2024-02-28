@@ -1,6 +1,6 @@
 using CommonRates.Common.Attributes;
 
-namespace CommonRates.Common.Ports.Binance.Requests;
+namespace CommonRates.Binance.Models.Requests;
 
 public class GetBinanceAggregateTradesRequest
 {

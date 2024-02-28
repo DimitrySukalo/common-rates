@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace CommonRates.Common.Ports.Binance.Responses;
+namespace CommonRates.Binance.Models.Responses;
 
 public class BinanceAveragePriceResponse
 {
