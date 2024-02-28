@@ -40,4 +40,12 @@ public class BinanceApiAdapter : IBinanceApiAdapter
         return await HttpClientHelper.PerformJsonRequest<List<BinanceAveragePriceResponse>>(
             async client => await client.GetAsync(url), _httpClient, _logger);
     }
+
+    public async Task<List<BinanceDepthResponse>> GetDepth(GetBinanceDepthRequest request)
+    {
+        var url = BinanceUrlBuilder.BuildDepthUrl(_apiOptions.BaseUrl, request);
+        
+        return await HttpClientHelper.PerformJsonRequest<List<BinanceDepthResponse>>(
+            async client => await client.GetAsync(url), _httpClient, _logger);
+    }
 }

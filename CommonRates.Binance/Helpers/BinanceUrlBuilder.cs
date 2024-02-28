@@ -18,4 +18,11 @@ public static class BinanceUrlBuilder
 
         return GeneralUrlBuilder.AppendUrlQueryParams(request, url);
     }
+    
+    public static string BuildDepthUrl(string baseUrl, GetBinanceDepthRequest request)
+    {
+        var url = $"{baseUrl}/api/v3/depth";
+
+        return GeneralUrlBuilder.AppendUrlQueryParams(request, url);
+    }
 }
