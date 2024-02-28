@@ -33,4 +33,11 @@ public static class BinanceUrlBuilder
 
         return GeneralUrlBuilder.AppendUrlQueryParams(request, url);
     }
+    
+    public static string BuildKlinesUrl(string baseUrl, GetBinanceKlinesRequest request)
+    {
+        var url = $"{baseUrl}/api/v3/klines";
+
+        return GeneralUrlBuilder.AppendUrlQueryParams(request, url);
+    }
 }

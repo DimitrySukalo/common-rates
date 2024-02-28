@@ -8,4 +8,10 @@ public enum ApplicationError
     ValueIsNotArray,
 
     #endregion
+
+    #region Binance
+
+    CannotReadKlinesResponse = RequestErrorCode.Binance + 1,
+
+    #endregion
 }
