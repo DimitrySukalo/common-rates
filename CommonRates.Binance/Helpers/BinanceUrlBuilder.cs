@@ -41,25 +41,51 @@ public static class BinanceUrlBuilder
         return GeneralUrlBuilder.AppendUrlQueryParams(request, url);
     }
     
-    public static string BuildTickerUrl(string baseUrl, GetBinanceTickerRequest request)
+    public static string BuildUiKlinesUrl(string baseUrl, GetBinanceUiKlinesRequest request)
+    {
+        var url = $"{baseUrl}/api/v3/uiKlines";
+
+        return GeneralUrlBuilder.AppendUrlQueryParams(request, url);
+    }
+    
+    public static string BuildTickerUrl(string baseUrl, GetBinanceTickersRequest request)
     {
         var url = $"{baseUrl}/api/v3/ticker";
 
         return GeneralUrlBuilder.AppendUrlQueryParams(request, url);
     }
     
-    public static string Build24HoursTickerUrl(string baseUrl, GetBinance24HoursTickerRequest request)
+    public static string Build24HoursTickerUrl(string baseUrl, GetBinance24HoursTickersRequest request)
     {
         var url = $"{baseUrl}/api/v3/ticker/24hr";
 
         return GeneralUrlBuilder.AppendUrlQueryParams(request, url);
     }
     
-    public static string BuildBookTickerUrl(string baseUrl, GetBinanceBookTickerRequest request)
+    public static string BuildBookTickerUrl(string baseUrl, GetBinanceBookTickersRequest request)
     {
         var url = $"{baseUrl}/api/v3/ticker/bookTicker";
 
         return GeneralUrlBuilder.AppendUrlQueryParams(request, url);
+    }
+    
+    public static string BuildTickerPriceUrl(string baseUrl, GetBinanceTickerPriceRequest request)
+    {
+        var url = $"{baseUrl}/api/v3/ticker/price";
+
+        return GeneralUrlBuilder.AppendUrlQueryParams(request, url);
+    }
+    
+    public static string BuildTradesUrl(string baseUrl, GetBinanceTradesRequest request)
+    {
+        var url = $"{baseUrl}/api/v3/trades";
+
+        return GeneralUrlBuilder.AppendUrlQueryParams(request, url);
+    }
+    
+    public static string BuildTimeUrl(string baseUrl)
+    {
+        return $"{baseUrl}/api/v3/time";
     }
     
     public static string BuildPingUrl(string baseUrl)

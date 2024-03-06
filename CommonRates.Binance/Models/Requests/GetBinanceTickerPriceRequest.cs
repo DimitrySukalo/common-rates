@@ -3,7 +3,7 @@ using CommonRates.Common.Enums.Behaviours;
 
 namespace CommonRates.Binance.Models.Requests;
 
-public class GetBinanceBookTickerRequest
+public class GetBinanceTickerPriceRequest
 {
     [UrlParameter("symbols", UrlParameterConvertingBehaviour.BinanceArray)] 
     public string[] Symbols { get; set; }

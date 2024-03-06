@@ -1,5 +1,7 @@
+using System.Text.Json;
 using CommonRates.Binance.Contracts;
 using CommonRates.Binance.Helpers;
+using CommonRates.Binance.JsonConverters;
 using CommonRates.Binance.Models.Requests;
 using CommonRates.Binance.Models.Requests.Abstracts;
 using CommonRates.Binance.Models.Responses;
@@ -61,12 +63,30 @@ public class BinanceApiAdapter : IBinanceApiAdapter
     public async Task<List<List<BinanceKlinesResponse>>> GetKlinesAsync(GetBinanceKlinesRequest request)
     {
         var url = BinanceUrlBuilder.BuildKlinesUrl(_apiOptions.BaseUrl, request);
+
+        var options = new JsonSerializerOptions
+        {
+            Converters = {new BinanceKlinesConverter()}
+        };
         
         return await HttpClientHelper.PerformJsonRequest<List<List<BinanceKlinesResponse>>>(
-            async client => await client.GetAsync(url), _httpClient, _logger);
+            async client => await client.GetAsync(url), _httpClient, _logger, options);
     }
 
-    public async Task<List<BinanceTickerResponse>> GetTickerAsync(GetBinanceTickerRequest request)
+    public async Task<List<List<BinanceUiKlinesResponse>>> GetUiKlinesAsync(GetBinanceUiKlinesRequest request)
+    {
+        var url = BinanceUrlBuilder.BuildUiKlinesUrl(_apiOptions.BaseUrl, request);
+
+        var options = new JsonSerializerOptions
+        {
+            Converters = {new BinanceUiKlinesConverter()}
+        };
+        
+        return await HttpClientHelper.PerformJsonRequest<List<List<BinanceUiKlinesResponse>>>(
+            async client => await client.GetAsync(url), _httpClient, _logger, options);
+    }
+
+    public async Task<List<BinanceTickerResponse>> GetTickerAsync(GetBinanceTickersRequest request)
     {
         var url = BinanceUrlBuilder.BuildTickerUrl(_apiOptions.BaseUrl, request);
         
@@ -74,7 +94,7 @@ public class BinanceApiAdapter : IBinanceApiAdapter
             async client => await client.GetAsync(url), _httpClient, _logger);
     }
 
-    public async Task<List<Binance24HoursTickerResponse>> Get24HoursTickerAsync(GetBinance24HoursTickerRequest request)
+    public async Task<List<Binance24HoursTickerResponse>> Get24HoursTickerAsync(GetBinance24HoursTickersRequest request)
     {
         var url = BinanceUrlBuilder.Build24HoursTickerUrl(_apiOptions.BaseUrl, request);
         
@@ -82,11 +102,35 @@ public class BinanceApiAdapter : IBinanceApiAdapter
             async client => await client.GetAsync(url), _httpClient, _logger);
     }
 
-    public async Task<List<BinanceBookTickerResponse>> GetBookTickerAsync(GetBinanceBookTickerRequest request)
+    public async Task<List<BinanceBookTickerResponse>> GetBookTickerAsync(GetBinanceBookTickersRequest request)
     {
         var url = BinanceUrlBuilder.BuildBookTickerUrl(_apiOptions.BaseUrl, request);
         
         return await HttpClientHelper.PerformJsonRequest<List<BinanceBookTickerResponse>>(
+            async client => await client.GetAsync(url), _httpClient, _logger);
+    }
+
+    public async Task<List<BinanceTickerPriceResponse>> GetTickerPriceAsync(GetBinanceTickerPriceRequest request)
+    {
+        var url = BinanceUrlBuilder.BuildTickerPriceUrl(_apiOptions.BaseUrl, request);
+        
+        return await HttpClientHelper.PerformJsonRequest<List<BinanceTickerPriceResponse>>(
+            async client => await client.GetAsync(url), _httpClient, _logger);
+    }
+
+    public async Task<List<BinanceTradeResponse>> GetTradesAsync(GetBinanceTradesRequest request)
+    {
+        var url = BinanceUrlBuilder.BuildTradesUrl(_apiOptions.BaseUrl, request);
+        
+        return await HttpClientHelper.PerformJsonRequest<List<BinanceTradeResponse>>(
+            async client => await client.GetAsync(url), _httpClient, _logger);
+    }
+
+    public async Task<BinanceTimeResponse> GetTimeAsync()
+    {
+        var url = BinanceUrlBuilder.BuildTimeUrl(_apiOptions.BaseUrl);
+        
+        return await HttpClientHelper.PerformJsonRequest<BinanceTimeResponse>(
             async client => await client.GetAsync(url), _httpClient, _logger);
     }
 
