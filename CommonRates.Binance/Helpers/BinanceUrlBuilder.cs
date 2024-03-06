@@ -48,6 +48,13 @@ public static class BinanceUrlBuilder
         return GeneralUrlBuilder.AppendUrlQueryParams(request, url);
     }
     
+    public static string Build24HoursTickerUrl(string baseUrl, GetBinance24HoursTickerRequest request)
+    {
+        var url = $"{baseUrl}/api/v3/ticker/24hr";
+
+        return GeneralUrlBuilder.AppendUrlQueryParams(request, url);
+    }
+    
     public static string BuildPingUrl(string baseUrl)
     {
         return $"{baseUrl}/api/v3/ping";
