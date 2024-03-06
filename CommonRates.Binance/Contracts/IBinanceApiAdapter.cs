@@ -20,5 +20,7 @@ public interface IBinanceApiAdapter
     
     public Task<List<Binance24HoursTickerResponse>> Get24HoursTickerAsync(GetBinance24HoursTickerRequest request);
     
+    public Task<List<BinanceBookTickerResponse>> GetBookTickerAsync(GetBinanceBookTickerRequest request);
+    
     public Task GetPingAsync();
 }

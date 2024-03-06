@@ -55,6 +55,13 @@ public static class BinanceUrlBuilder
         return GeneralUrlBuilder.AppendUrlQueryParams(request, url);
     }
     
+    public static string BuildBookTickerUrl(string baseUrl, GetBinanceBookTickerRequest request)
+    {
+        var url = $"{baseUrl}/api/v3/ticker/bookTicker";
+
+        return GeneralUrlBuilder.AppendUrlQueryParams(request, url);
+    }
+    
     public static string BuildPingUrl(string baseUrl)
     {
         return $"{baseUrl}/api/v3/ping";
