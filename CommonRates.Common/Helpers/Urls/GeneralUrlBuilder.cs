@@ -21,6 +21,12 @@ public static class GeneralUrlBuilder
             var attribute = prop.GetCustomAttribute<UrlParameterAttribute>();
             
             // Append parameter to the URL
+
+            if (prop.GetValue(payload) is null)
+            {
+                continue;
+            }
+            
             urlBuilder.Append(isFirstParam ? "?" : "&");
             
             var behaviourHandler = new UrlBuilderBehaviourHandler<T>(attribute, prop, payload);

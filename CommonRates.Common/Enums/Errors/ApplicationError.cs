@@ -6,6 +6,7 @@ public enum ApplicationError
 
     UrlParameterBehaviourNotFound = RequestErrorCode.General + 1,
     ValueIsNotArray,
+    ValueIsNotValid,
 
     #endregion
 

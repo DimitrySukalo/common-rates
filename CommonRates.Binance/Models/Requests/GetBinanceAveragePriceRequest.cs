@@ -1,8 +1,16 @@
+using CommonRates.Binance.Helpers;
 using CommonRates.Common.Attributes;
 
 namespace CommonRates.Binance.Models.Requests;
 
-public abstract class GetBinanceAveragePriceRequest
+public class GetBinanceAveragePriceRequest
 {
-    [UrlParameter("symbol")] public string Symbol { get; set; }
+    [UrlParameter("symbol")] public string Symbol { get; }
+
+    public GetBinanceAveragePriceRequest(string symbol)
+    {
+        BinanceValidationHelper.ValidateStringValue(symbol);
+        
+        Symbol = symbol;
+    }
 }
