@@ -16,5 +16,7 @@ public interface IBinanceApiAdapter
     
     public Task<List<List<BinanceKlinesResponse>>> GetKlinesAsync(GetBinanceKlinesRequest request);
     
+    public Task<List<BinanceTickerResponse>> GetKlinesAsync(GetBinanceTickerRequest request);
+    
     public Task GetPingAsync();
 }

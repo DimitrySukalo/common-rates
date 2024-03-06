@@ -66,6 +66,14 @@ public class BinanceApiAdapter : IBinanceApiAdapter
             async client => await client.GetAsync(url), _httpClient, _logger);
     }
 
+    public async Task<List<BinanceTickerResponse>> GetKlinesAsync(GetBinanceTickerRequest request)
+    {
+        var url = BinanceUrlBuilder.BuildTickerUrl(_apiOptions.BaseUrl, request);
+        
+        return await HttpClientHelper.PerformJsonRequest<List<BinanceTickerResponse>>(
+            async client => await client.GetAsync(url), _httpClient, _logger);
+    }
+
     public async Task GetPingAsync()
     {
         var url = BinanceUrlBuilder.BuildPingUrl(_apiOptions.BaseUrl);
