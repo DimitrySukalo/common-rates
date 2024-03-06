@@ -40,4 +40,32 @@ public static class HttpClientHelper
         throw new ValidationException(
             $"Error request to api. Response code: {response.StatusCode}. Response body: {error}.");
     }
+    
+    public static async Task PerformEmptyRequest(
+        Func<HttpClient, Task<HttpResponseMessage>> request, 
+        HttpClient httpClient, 
+        ILogger logger)
+    {
+        HttpResponseMessage response;
+        try
+        {
+            response = await request.Invoke(httpClient);
+        }
+        catch (Exception e)
+        {
+            throw new ValidationException($"Api server response error. Message: {e.Message}");
+        }
+
+        if (!response.IsSuccessStatusCode)
+        {
+            var error = await response.Content.ReadAsStringAsync();
+        
+            logger.LogInformation(
+                "Error request to api {@request}. Response code: {@statusCode}. Response body: {@response}.", 
+                request, response.StatusCode, error);
+        
+            throw new ValidationException(
+                $"Error request to api. Response code: {response.StatusCode}. Response body: {error}.");
+        }
+    }
 }

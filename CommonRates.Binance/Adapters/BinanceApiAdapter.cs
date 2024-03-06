@@ -34,7 +34,7 @@ public class BinanceApiAdapter : IBinanceApiAdapter
             async client => await client.GetAsync(url), _httpClient, _logger);
     }
 
-    public async Task<BinanceAveragePriceResponse> GetAveragePrice(GetBinanceAveragePriceRequest request)
+    public async Task<BinanceAveragePriceResponse> GetAveragePriceAsync(GetBinanceAveragePriceRequest request)
     {
         var url = BinanceUrlBuilder.BuildAveragePriceUrl(_apiOptions.BaseUrl, request);
         
@@ -42,7 +42,7 @@ public class BinanceApiAdapter : IBinanceApiAdapter
             async client => await client.GetAsync(url), _httpClient, _logger);
     }
 
-    public async Task<BinanceDepthResponse> GetDepth(GetBinanceDepthRequest request)
+    public async Task<BinanceDepthResponse> GetDepthAsync(GetBinanceDepthRequest request)
     {
         var url = BinanceUrlBuilder.BuildDepthUrl(_apiOptions.BaseUrl, request);
         
@@ -50,7 +50,7 @@ public class BinanceApiAdapter : IBinanceApiAdapter
             async client => await client.GetAsync(url), _httpClient, _logger);
     }
 
-    public async Task<BinanceExchangeInfoResponse> GetExchangeInfo(GetBinanceExchangeInfoAbstractRequest request)
+    public async Task<BinanceExchangeInfoResponse> GetExchangeInfoAsync(GetBinanceExchangeInfoAbstractRequest request)
     {
         var url = BinanceUrlBuilder.BuildExchangeInfoUrl(_apiOptions.BaseUrl, request);
         
@@ -58,11 +58,19 @@ public class BinanceApiAdapter : IBinanceApiAdapter
             async client => await client.GetAsync(url), _httpClient, _logger);
     }
 
-    public async Task<List<List<BinanceKlinesResponse>>> GetKlines(GetBinanceKlinesRequest request)
+    public async Task<List<List<BinanceKlinesResponse>>> GetKlinesAsync(GetBinanceKlinesRequest request)
     {
         var url = BinanceUrlBuilder.BuildKlinesUrl(_apiOptions.BaseUrl, request);
         
         return await HttpClientHelper.PerformJsonRequest<List<List<BinanceKlinesResponse>>>(
+            async client => await client.GetAsync(url), _httpClient, _logger);
+    }
+
+    public async Task GetPingAsync()
+    {
+        var url = BinanceUrlBuilder.BuildPingUrl(_apiOptions.BaseUrl);
+        
+        await HttpClientHelper.PerformEmptyRequest(
             async client => await client.GetAsync(url), _httpClient, _logger);
     }
 }

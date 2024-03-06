@@ -8,11 +8,13 @@ public interface IBinanceApiAdapter
 {
     public Task<List<BinanceAggregateTradesResponse>> GetAggregateTradesAsync(GetBinanceAggregateTradesRequest request);
     
-    public Task<BinanceAveragePriceResponse> GetAveragePrice(GetBinanceAveragePriceRequest request);
+    public Task<BinanceAveragePriceResponse> GetAveragePriceAsync(GetBinanceAveragePriceRequest request);
     
-    public Task<BinanceDepthResponse> GetDepth(GetBinanceDepthRequest request);
+    public Task<BinanceDepthResponse> GetDepthAsync(GetBinanceDepthRequest request);
     
-    public Task<BinanceExchangeInfoResponse> GetExchangeInfo(GetBinanceExchangeInfoAbstractRequest request);
+    public Task<BinanceExchangeInfoResponse> GetExchangeInfoAsync(GetBinanceExchangeInfoAbstractRequest request);
     
-    public Task<List<List<BinanceKlinesResponse>>> GetKlines(GetBinanceKlinesRequest request);
+    public Task<List<List<BinanceKlinesResponse>>> GetKlinesAsync(GetBinanceKlinesRequest request);
+    
+    public Task GetPingAsync();
 }
